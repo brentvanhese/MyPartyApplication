@@ -1,11 +1,18 @@
-<!DOCTYPE html>
-<html lang="nl">
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>About</title>
 </head>
 <body>
+
 <h1>About me</h1>
-<p>blabla blabla blabla bla</p>
+<p>This is all about me...</p>
+<ol>
+    <li><p th:text="${myName}"></p></li>
+    <li><p th:text="${myStreet}"></p></li>
+    <li><p th:text="${myCity}"></p></li>
+</ol>
+
 </body>
 </html>

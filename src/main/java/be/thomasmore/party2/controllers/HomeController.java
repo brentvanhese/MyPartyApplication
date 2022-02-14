@@ -14,7 +14,13 @@ public class HomeController {
     }
 
     @GetMapping("/about")
-    public String about(){
+    public String about(Model model){
+        String myName = "Brent Van Hese";
+        model.addAttribute("myName", myName);
+        String myStreet = "Breedstraat 30";
+        model.addAttribute("myStreet", myStreet);
+        String myCity = "Sint-Niklaas";
+        model.addAttribute("myCity", myCity);
         return "about";
     }
 }
