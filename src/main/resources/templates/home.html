@@ -3,11 +3,14 @@
     <head>
         <meta charset="UTF-8">
         <title>Home</title>
+        <link rel="stylesheet" type="text/css" media="all"
+              th:href="@{css/party.css}" href="/static/css/party.css" />
     </head>
     <body>
 
     <h1>Homepagina</h1>
     <p th:text="${myCalculatedValue}">onbekend nummer</p>
 
+    <a th:href="@{/about}">About</a>
     </body>
 </html>

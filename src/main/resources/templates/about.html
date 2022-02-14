@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>About</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{css/party.css}" href="/static/css/party.css"/>
 </head>
 <body>
 
 <h1>About me</h1>
 <p>This is all about me...</p>
 <ol>
-    <li><p th:text="${myName}"></p></li>
-    <li><p th:text="${myStreet}"></p></li>
-    <li><p th:text="${myCity}"></p></li>
+    <li><p th:text="${myName}">onbekende naam</p></li>
+    <li><p th:text="${myStreet}">onbekende naam</p></li>
+    <li><p th:text="${myCity}">onbekende naam</p></li>
 </ol>
 
+<p th:text="'Ik ben ' + ${myName} + ' en mijn adres is ' + ${myStreet} + ' te ' + ${myCity} + '.' "></p>
+
+<a th:href="@{/home}">Home</a>
 </body>
 </html>
