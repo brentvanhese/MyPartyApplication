@@ -10,15 +10,21 @@
     <header>
         <h1>Let's party!</h1>
         <nav>
-            <a th:href="@{/}">Home</a>
-            <a th:href="@{/venuedetails}">Venuedetails</a>
-            <a th:href="@{/about}">About</a>
+            <ul>
+                <li><a th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/venuedetails}">Venuedetails</a></li>
+                <li><a th:href="@{/about}">About</a></li>
+            </ul>
         </nav>
     </header>
-    <h2>Homepagina</h2>
-    <p th:text="${myCalculatedValue}">onbekend nummer</p>
 
-    <a th:href="@{/about}">About</a>
-    <a th:href="@{/pay}">Pay</a>
+    <main>
+        <h2>Homepagina</h2>
+        <p th:text="${myCalculatedValue}">onbekend nummer</p>
+
+        <a th:href="@{/about}">About</a>
+        <a th:href="@{/pay}">Pay</a>
+    </main>
+
     </body>
 </html>

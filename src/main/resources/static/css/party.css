@@ -2,21 +2,46 @@ html {
     background-color: lightgray;
     color: seagreen;
 }
+
+body{
+    margin: 0;
+}
+
+H1{
+    color: burlywood;
+    margin: 0;
+    font-size: 60px;
+}
+
+nav ul{
+    padding-left: 0;
+}
+
+nav ul > li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+nav li a{
+    color: seagreen;
+    background-color: burlywood;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    width: 100px;
+    height: 20px;
+}
+
+header{
+    padding: 15px;
+    background-color: seagreen;
+}
+
+main{
+    padding: 15px;
+}
+
  tr, td{
      margin: 0;
  }
 
- H1{
-     color: burlywood;
- }
-
- nav > a{
-     color: seagreen;
-     background-color: burlywood;
-     width: 100px;
-     height: 25px;
- }
-
- header{
-     background-color: seagreen;
- }

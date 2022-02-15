@@ -7,17 +7,28 @@
 </head>
 <body>
 
-<h1>About me</h1>
-<p>This is all about me...</p>
-<ol>
-    <li><p th:text="${myName}">onbekende naam</p></li>
-    <li><p th:text="${myStreet}">onbekende naam</p></li>
-    <li><p th:text="${myCity}">onbekende naam</p></li>
-</ol>
+<header>
+    <h1>Let's party!</h1>
+    <nav>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/venuedetails}">Venuedetails</a></li>
+            <li><a th:href="@{/about}">About</a></li>
+        </ul>
+    </nav>
+</header>
 
-<p th:text="'Ik ben ' + ${myName} + ' en mijn adres is ' + ${myStreet} + ' te ' + ${myCity} + '.' "></p>
+<main>
+    <h2>About me</h2>
+    <p>This is all about me...</p>
+    <ol>
+        <li><p th:text="${myName}">onbekende naam</p></li>
+        <li><p th:text="${myStreet}">onbekende naam</p></li>
+        <li><p th:text="${myCity}">onbekende naam</p></li>
+    </ol>
 
-<a th:href="@{/home}">Home</a>
-<a th:href="@{/pay}">Pay</a>
+    <p th:text="'Ik ben ' + ${myName} + ' en mijn adres is ' + ${myStreet} + ' te ' + ${myCity} + '.' "></p>
+</main>
+
 </body>
 </html>

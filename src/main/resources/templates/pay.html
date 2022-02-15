@@ -7,11 +7,21 @@
 </head>
 <body>
 
-<p th:text="'De datum van vandaag is ' + ${dateToday}"></p>
-<p th:text="'De uiterste datum van betalen is ' + ${dateToPay}"></p>
+<header>
+    <h1>Let's party!</h1>
+    <nav>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/venuedetails}">Venuedetails</a></li>
+            <li><a th:href="@{/about}">About</a></li>
+        </ul>
+    </nav>
+</header>
 
-<a th:href="@{/home}">Home</a>
-<a th:href="@{/about}">About</a>
+<main>
+    <p th:text="'De datum van vandaag is ' + ${dateToday}"></p>
+    <p th:text="'De uiterste datum van betalen is ' + ${dateToPay}"></p>
+</main>
 
 </body>
 </html>
