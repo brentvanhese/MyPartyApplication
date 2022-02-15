@@ -7,8 +7,42 @@
 </head>
 <body>
 
-<h2 th:text="${venue.getVenueName()}">Naam venue</h2>
-<a th:text="${venue.getLinkMoreInfo()}" th:href="${venue.getLinkMoreInfo()}">link venue</a>
+<h2 th:text="${venue.getVenueName()}">Name venue</h2>
+
+<table>
+    <tr>
+        <td><p>Info :</p></td>
+        <td><a th:text="${venue.getLinkMoreInfo()}" th:href="${venue.getLinkMoreInfo()}">link venue</a></td>
+    </tr>
+    <tr>
+        <td><p>Capacity :</p></td>
+        <td><p th:text="${venue.getCapacity()}">0</p></td>
+    </tr>
+    <tr>
+        <td><p>Food provided? :</p></td>
+        <td><p th:text="${venue.isFoodProvided() ? 'yes' : 'no'}">no</p></td>
+    </tr>
+    <tr>
+        <td><p>Indoor? :</p></td>
+        <td><p th:text="${venue.isIndoor() ? 'yes' : 'no'}">no</p></td>
+    </tr>
+    <tr>
+        <td><p>Outdoor? :</p></td>
+        <td><p th:text="${venue.isOutdoor() ? 'yes' : 'no'}">no</p></td>
+    </tr>
+    <tr>
+        <td><p>Free Parking Available? :</p></td>
+        <td><p th:text="${venue.isFreeParkingAvailable() ? 'yes' : 'no'}">no</p></td>
+    </tr>
+    <tr>
+        <td><p>Distance Public Transport in km :</p></td>
+        <td><p th:text="${venue.getDistanceFromPublicTransportInKm()}">0.0</p></td>
+    </tr>
+    <tr>
+        <td><p>City :</p></td>
+        <td><p th:text="${venue.getCity()}">Name city</p></td>
+    </tr>
+</table>
 
 </body>
 </html>

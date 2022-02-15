@@ -1,4 +1,7 @@
-html{
-    background-color: darkgray;
+html {
+    background-color: lightgray;
     color: seagreen;
 }
+ tr, td{
+     margin: 0;
+ }

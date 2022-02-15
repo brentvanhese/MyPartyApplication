@@ -10,7 +10,14 @@ public class VenueController {
 
     @GetMapping("/venuedetails")
     public String venuedetails(Model model) {
-        Venue v = new Venue("BoesjKammeree", "https://www.facebook.com/boesjKammeree");
+        Venue v = new Venue("Den Aalmoeznier", "https://denaalmoeznier.weebly.com/");
+        v.setCapacity(100);
+        v.setFoodProvided(true);
+        v.setIndoor(true);
+        v.setOutdoor(false);
+        v.setFreeParkingAvailable(false);
+        v.setDistanceFromPublicTransportInKm(1.0);
+        v.setCity("Antwerpen");
         model.addAttribute("venue", v);
         return "venuedetails";
     }
