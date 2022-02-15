@@ -5,3 +5,18 @@ html {
  tr, td{
      margin: 0;
  }
+
+ H1{
+     color: burlywood;
+ }
+
+ nav > a{
+     color: seagreen;
+     background-color: burlywood;
+     width: 100px;
+     height: 25px;
+ }
+
+ header{
+     background-color: seagreen;
+ }

@@ -7,8 +7,15 @@
               th:href="@{css/party.css}" href="/static/css/party.css" />
     </head>
     <body>
-
-    <h1>Homepagina</h1>
+    <header>
+        <h1>Let's party!</h1>
+        <nav>
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/venuedetails}">Venuedetails</a>
+            <a th:href="@{/about}">About</a>
+        </nav>
+    </header>
+    <h2>Homepagina</h2>
     <p th:text="${myCalculatedValue}">onbekend nummer</p>
 
     <a th:href="@{/about}">About</a>
