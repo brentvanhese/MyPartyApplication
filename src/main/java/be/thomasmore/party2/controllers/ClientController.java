@@ -27,6 +27,9 @@ public class ClientController {
         if (optionalClient.isPresent()) {
             model.addAttribute("client", optionalClient.get());
         }
+
+        Client client = optionalClient.get();
+
         //create greeting
         LocalDateTime now = LocalDateTime.now();
         String greeting = "";
@@ -41,14 +44,14 @@ public class ClientController {
             greeting += "Goedenavond ";
         }
 
-        if (optionalClient.get().getGender().equals("M")){
+        if (client.getGender().equals("M")){
             greeting += "meneer ";
         }
-        else if (optionalClient.get().getGender().equals("F")){
+        else if (client.getGender().equals("F")){
             greeting += "mevrouw ";
         }
 
-        greeting += optionalClient.get().getName();
+        greeting += client.getName();
 
         model.addAttribute("greeting", greeting);
 
@@ -61,32 +64,34 @@ public class ClientController {
         if (optionalClient.isPresent()) {
             model.addAttribute("client", optionalClient.get());
         }
-        generateClientCode(optionalClient.get().getName(), optionalClient.get().getBirthdate());
+        Client client = optionalClient.get();
+
+        generateClientCode(client);
 
         //show client code
         String showClientCode = "";
 
-        if (optionalClient.get().getGender().equals("M")){
-            showClientCode += "meneer ";
+        if (client.getGender().equals("M")){
+            showClientCode += "Meneer ";
         }
-        else if (optionalClient.get().getGender().equals("F")){
-            showClientCode += "mevrouw ";
+        else if (client.getGender().equals("F")){
+            showClientCode += "Mevrouw ";
         }
 
-        showClientCode += optionalClient.get().getName() + ", uw secretcode is " + clientCode;
+        showClientCode += client.getName() + ", uw secretcode is " + clientCode;
 
         model.addAttribute("clientCode", showClientCode);
 
         return "showSecretCode";
     }
 
-    public void generateClientCode(String name, Date birthDate){
+    public void generateClientCode(Client client){
         Random random = new Random();
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(birthDate);
+        calendar.setTime(client.getBirthdate());
 
-        String firstLetters = name.substring(0,2);
-        String lastLetters = name.substring(name.length() - 2);
+        String firstLetters = client.getName().substring(0,2);
+        String lastLetters = client.getName().substring(client.getName().length() - 2);
         int birthDay = calendar.get(Calendar.DAY_OF_MONTH);
         int randomNum = random.nextInt(calendar.get(Calendar.YEAR));
 
