@@ -45,3 +45,17 @@ main{
      margin: 0;
  }
 
+.venue{
+    width: 500px;
+    height: 25px;
+    background-color: burlywood;
+    color: seagreen;
+    text-align: center;
+    margin: 25px auto;
+    padding-bottom: 15px;
+}
+
+.venue a{
+    text-decoration: none;
+    margin-top: 10px;
+}

@@ -1,14 +1,14 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
-<html lang="nl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Pay</title>
+    <title>Venues</title>
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}" href="/static/css/party.css"/>
 </head>
 <body>
 
 <header>
-    <h1>Let's party!</h1>
+    <h1>Venues</h1>
     <nav>
         <ul>
             <li><a th:href="@{/}">Home</a></li>
@@ -19,8 +19,9 @@
 </header>
 
 <main>
-    <p th:text="'De datum van vandaag is ' + ${dateToday}"></p>
-    <p th:text="'De uiterste datum van betalen is ' + ${dateToPay}"></p>
+    <p class="venue"><a th:href="@{/venuedetails/1}">Venue 1</a></p>
+    <p class="venue"><a th:href="@{/venuedetails/2}">Venue 2</a></p>
+    <p class="venue"><a th:href="@{/venuedetails/3}">Venue 3</a></p>
 </main>
 
 </body>
