@@ -12,9 +12,14 @@
 </header>
 
 <main>
-    <p class="venue"><a th:href="@{/venuedetails/1}">Venue 1</a></p>
-    <p class="venue"><a th:href="@{/venuedetails/2}">Venue 2</a></p>
-    <p class="venue"><a th:href="@{/venuedetails/3}">Venue 3</a></p>
+
+    <div th:each="venue: ${venues}">
+        <p class="venue">
+            <a th:href="@{|/venuedetails/${venue.id}|}">
+                <span th:text="${venue.venueName}">venue name</span>
+            </a>
+        </p>
+    </div>
 </main>
 
 <footer th:replace="fragments/footer :: footer">
