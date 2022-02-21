@@ -7,15 +7,8 @@
 </head>
 <body>
 
-<header>
-    <h1>Let's party!</h1>
-    <nav>
-        <ul>
-            <li><a th:href="@{/}">Home</a></li>
-            <li><a th:href="@{/venuelist}">Venues</a></li>
-            <li><a th:href="@{/about}">About</a></li>
-        </ul>
-    </nav>
+<header th:replace="fragments/header :: header">
+    <p>Hier komt de header</p>
 </header>
 
 <main>
