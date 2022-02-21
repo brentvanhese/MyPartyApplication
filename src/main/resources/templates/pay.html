@@ -12,9 +12,16 @@
 </header>
 
 <main>
+    <p th:if="${weekend}">Prettig weekend, je hebt het verdiend!</p>
+    <p th:unless="${weekend}">Voor je het weet is het weekend!</p>
+
     <p th:text="'De datum van vandaag is ' + ${dateToday}"></p>
     <p th:text="'De uiterste datum van betalen is ' + ${dateToPay}"></p>
 </main>
+
+<footer th:replace="fragments/footer :: footer">
+    <p>Hier komt de footer</p>
+</footer>
 
 </body>
 </html>

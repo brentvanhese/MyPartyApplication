@@ -23,5 +23,9 @@
     <p th:text="'Ik ben ' + ${myName} + ' en mijn adres is ' + ${myStreet} + ' te ' + ${myCity} + '.' "></p>
 </main>
 
+<footer th:replace="fragments/footer :: footer">
+    <p>Hier komt de footer</p>
+</footer>
+
 </body>
 </html>

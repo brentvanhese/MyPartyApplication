@@ -44,6 +44,9 @@ public class HomeController {
         System.out.println("After formatting: " + formatDateTime30Days);
         model.addAttribute("dateToPay", formatDateTime30Days);
 
+        boolean weekend = now.getDayOfWeek().equals(DayOfWeek.SATURDAY) || now.getDayOfWeek().equals(DayOfWeek.SUNDAY);
+        model.addAttribute("weekend", weekend);
+
         return "pay";
     }
 

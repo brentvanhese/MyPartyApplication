@@ -62,3 +62,9 @@ main{
     margin-top: 10px;
     color: #6A8E7F
 }
+
+footer{
+    background-color: #6A8E7F;
+    color: #EDC7CF;
+    text-align: center;
+}
