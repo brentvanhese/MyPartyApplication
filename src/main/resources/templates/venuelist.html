@@ -12,6 +12,9 @@
 </header>
 
 <main>
+    <div th:replace="fragments/filter :: filter">
+        Hier komen de filters
+    </div>
 
     <div th:each="venue: ${venues}">
         <p class="venue">

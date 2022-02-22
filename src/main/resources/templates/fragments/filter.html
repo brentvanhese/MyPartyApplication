@@ -1,0 +1,37 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Venues</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}" href="/static/css/party.css"/>
+</head>
+<body>
+
+<div th:fragment="filter">
+    <div>
+        Outdoor :
+        <button><a th:href="@{/venuelist}">All</a></button>
+        <button><a th:href="@{/venuelist/outdoor/yes}">Yes</a></button>
+        <button ><a th:href="@{/venuelist/outdoor/no}">No</a></button>
+    </div>
+
+    <div>
+        Indoor :
+        <button><a th:href="@{/venuelist}">All</a></button>
+        <button><a th:href="@{/venuelist/indoor/yes}">Yes</a></button>
+        <button ><a th:href="@{/venuelist/indoor/no}">No</a></button>
+    </div>
+
+    <div>
+        Size :
+        <button><a th:href="@{/venuelist}">All</a></button>
+        <button><a th:href="@{/venuelist/size/s}">S</a></button>
+        <button ><a th:href="@{/venuelist/size/m}">M</a></button>
+        <button ><a th:href="@{/venuelist/size/l}">L</a></button>
+    </div>
+</div>
+
+</body>
+</html>
+
+
