@@ -28,9 +28,9 @@ public class VenueController {
     @GetMapping("/venuelist")
     public String venueList(Model model) {
         Iterable<Venue> allVenues = venueRepository.findAll();
-        Boolean allSelectedOutdoor = true;
+        Boolean allSelected = true;
         model.addAttribute("venues", allVenues);
-        model.addAttribute("allSelectedOutdoor", allSelectedOutdoor);
+        model.addAttribute("allSelected", allSelected);
         return "venuelist";
     }
 
@@ -52,7 +52,27 @@ public class VenueController {
             model.addAttribute("yesSelectedOutdoor", yesSelectedOutdoor);
         }
         model.addAttribute("venues", venues);
-        model.addAttribute("filter", filter);
+        return "venuelist";
+    }
+
+    @GetMapping({"/venuelist/indoor", "/venuelist/indoor/{filter}"})
+    public String venueListIndoor(Model model, @PathVariable(required = false) String filter){
+        if (filter==null){
+            return "venuelist";
+        }
+        Iterable<Venue> venues;
+        Boolean selectedindoor = null;
+        if (filter.equals("no")){
+            venues = venueRepository.findByIndoor(false);
+            Boolean noSelectedIndoor = true;
+            model.addAttribute("noSelectedIndoor", noSelectedIndoor);
+        }
+        else{
+            venues = venueRepository.findByIndoor(true);
+            Boolean yesSelectedIndoor = true;
+            model.addAttribute("yesSelectedIndoor", yesSelectedIndoor);
+        }
+        model.addAttribute("venues", venues);
         return "venuelist";
     }
 
