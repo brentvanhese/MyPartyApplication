@@ -70,3 +70,17 @@ footer{
     margin-bottom: 0;
     height: 40px;
 }
+
+.button-look{
+    background-color: #EDC7CF;
+    color: #6A8E7F;
+}
+
+.button-look > a{
+    text-decoration: none;
+}
+
+.active{
+    background-color: #6A8E7F;
+    color: #EDC7CF
+}
