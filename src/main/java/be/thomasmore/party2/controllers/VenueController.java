@@ -75,6 +75,4 @@ public class VenueController {
         model.addAttribute("venues", venues);
         return "venuelist";
     }
-
-
 }
