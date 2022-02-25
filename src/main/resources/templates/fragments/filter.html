@@ -10,24 +10,24 @@
 <div th:fragment="filter">
     <div>
         Outdoor :
-        <button class="button-look" th:classappend="${allSelected} ? 'active' : ''"><a th:href="@{/venuelist}">All</a></button>
-        <button class="button-look" th:classappend="${yesSelectedOutdoor} ? 'active' : '' "><a th:href="@{/venuelist/outdoor/yes}">Yes</a></button>
-        <button class="button-look" th:classappend="${noSelectedOutdoor} ? 'active' : '' "><a th:href="@{/venuelist/outdoor/no}">No</a></button>
+        <button class="button-look" th:classappend="${outdoorFilter==null} ? 'active' : ''"><a th:href="@{/venuelist}">All</a></button>
+        <button class="button-look" th:classappend="${outdoorFilter!=null && outdoorFilter} ? 'active' : '' "><a th:href="@{/venuelist/outdoor/yes}">Yes</a></button>
+        <button class="button-look" th:classappend="${outdoorFilter!=null && !outdoorFilter} ? 'active' : '' "><a th:href="@{/venuelist/outdoor/no}">No</a></button>
     </div>
 
     <div>
         Indoor :
-        <button class="button-look" th:classappend="${allSelected} ? 'active' : ''"><a th:href="@{/venuelist}">All</a></button>
-        <button class="button-look" th:classappend="${yesSelectedIndoor} ? 'active' : '' "><a th:href="@{/venuelist/indoor/yes}">Yes</a></button>
-        <button class="button-look" th:classappend="${noSelectedIndoor} ? 'active' : '' "><a th:href="@{/venuelist/indoor/no}">No</a></button>
+        <button class="button-look" th:classappend="${indoorFilter==null} ? 'active' : ''"><a th:href="@{/venuelist}">All</a></button>
+        <button class="button-look" th:classappend="${indoorFilter!=null && indoorFilter} ? 'active' : '' "><a th:href="@{/venuelist/indoor/yes}">Yes</a></button>
+        <button class="button-look" th:classappend="${indoorFilter!=null && !indoorFilter} ? 'active' : '' "><a th:href="@{/venuelist/indoor/no}">No</a></button>
     </div>
 
     <div>
         Size :
-        <button class="button-look" th:classappend="${allSelected} ? 'active' : ''"><a th:href="@{/venuelist}">All</a></button>
-        <button class="button-look"><a th:href="@{/venuelist/size/s}">S</a></button>
-        <button class="button-look"><a th:href="@{/venuelist/size/m}">M</a></button>
-        <button class="button-look"><a th:href="@{/venuelist/size/l}">L</a></button>
+        <button class="button-look" th:classappend="${sizeFilter==null} ? 'active' : ''"><a th:href="@{/venuelist}">All</a></button>
+        <button class="button-look" th:classappend="${sizeFilter!=null && sizeFilter=='S'} ? 'active' : ''"><a th:href="@{/venuelist/size/S}">S</a></button>
+        <button class="button-look" th:classappend="${sizeFilter!=null && sizeFilter=='M'} ? 'active' : ''"><a th:href="@{/venuelist/size/M}">M</a></button>
+        <button class="button-look" th:classappend="${sizeFilter!=null && sizeFilter=='L'} ? 'active' : ''"><a th:href="@{/venuelist/size/L}">L</a></button>
     </div>
 </div>
 
