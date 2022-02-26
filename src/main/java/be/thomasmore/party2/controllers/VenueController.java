@@ -19,8 +19,20 @@ public class VenueController {
     public String venueDetails(Model model, @PathVariable(required = false) Integer id) {
         if (id==null) return "venuedetails";
         Optional<Venue> optionalVenue = venueRepository.findById(id);
+        Optional<Venue> optionalPrev = venueRepository.findFirstByIdLessThanOrderByIdDesc(id);
+        Optional<Venue> optionalNext = venueRepository.findFirstByIdGreaterThanOrderById(id);
         if (optionalVenue.isPresent()) {
             model.addAttribute("venue", optionalVenue.get());
+        }
+        if (optionalPrev.isPresent()) {
+            model.addAttribute("prev", optionalPrev.get().getId());
+        } else {
+            model.addAttribute("prev", venueRepository.findFirstByOrderByIdDesc().get().getId());
+        }
+        if (optionalNext.isPresent()) {
+            model.addAttribute("next", optionalNext.get().getId());
+        } else {
+            model.addAttribute("next", venueRepository.findFirstByOrderByIdAsc().get().getId());
         }
         return "venuedetails";
     }
