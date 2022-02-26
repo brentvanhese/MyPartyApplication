@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>About</title>
+    <title>Artists</title>
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}" href="/static/css/party.css"/>
 </head>
 <body>
@@ -12,8 +12,13 @@
 </header>
 
 <main>
-    <h2>About me</h2>
-
+    <div th:each="artist: ${artists}">
+        <p class="venue">
+            <a th:href="@{|/artistdetails/${artist.id}|}">
+                <span th:text="${artist.artistName}">Artist name</span>
+            </a>
+        </p>
+    </div>
 </main>
 
 <footer th:replace="fragments/footer :: footer">

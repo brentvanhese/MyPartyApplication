@@ -1,14 +1,16 @@
 html {
-    background-color: lightgray;
-    color: seagreen;
+    background-color: #D0CFEC;
+    color: #4c6c5d;
+    font-family: Bahnschrift, sans-serif;
 }
 
 body{
     margin: 0;
+
 }
 
 H1{
-    color: burlywood;
+    color: #EDC7CF;
     margin: 0;
     font-size: 60px;
 }
@@ -23,8 +25,8 @@ nav ul > li {
 }
 
 nav li a{
-    color: seagreen;
-    background-color: burlywood;
+    color: #6A8E7F;
+    background-color: #EDC7CF;
     display: block;
     text-align: center;
     text-decoration: none;
@@ -34,14 +36,51 @@ nav li a{
 
 header{
     padding: 15px;
-    background-color: seagreen;
+    background-color: #6A8E7F;
 }
 
 main{
     padding: 15px;
 }
 
- tr, td{
-     margin: 0;
- }
+tr, td{
+    margin: 0;
+}
 
+.venue{
+    width: 500px;
+    height: 25px;
+    background-color: #EDC7CF;
+    color: #6A8E7F;
+    text-align: center;
+    margin: 25px auto;
+    padding-bottom: 15px;
+}
+
+.venue a{
+    text-decoration: none;
+    margin-top: 10px;
+    color: #6A8E7F
+}
+
+footer{
+    background-color: #6A8E7F;
+    color: #EDC7CF;
+    text-align: center;
+    margin-bottom: 0;
+    height: 40px;
+}
+
+.button-look{
+    background-color: #EDC7CF;
+    color: #6A8E7F;
+}
+
+.button-look > a{
+    text-decoration: none;
+}
+
+.active{
+    background-color: #6A8E7F;
+    color: #EDC7CF
+}

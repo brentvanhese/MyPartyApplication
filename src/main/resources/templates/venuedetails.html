@@ -3,63 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <title>Venuedetails</title>
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{css/party.css}" href="/static/css/party.css"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}" href="/static/css/party.css"/>
 </head>
 <body>
 
-<header>
-    <h1>Let's party!</h1>
-    <nav>
-        <ul>
-            <li><a th:href="@{/}">Home</a></li>
-            <li><a th:href="@{/venuedetails}">Venuedetails</a></li>
-            <li><a th:href="@{/about}">About</a></li>
-            <li><a th:href="@{/newclient}">New client</a></li>
-            <li><a th:href="@{/showcode}">Show code</a></li>
-        </ul>
-    </nav>
+<header th:replace="fragments/header :: header">
+    <p>Hier komt de header</p>
 </header>
 
 <main>
-    <h2 th:text="${venue.getVenueName()}">Name venue</h2>
+    <div th:if="${venue}">
+        <div th:if="${prev!=null}" class="prevButtonDiv">
+            <a class="buttonLook smallButton" th:href="@{'/venuedetails/' + ${prev}}">&lt;</a>
+        </div>
+        <div th:if="${next!=null}" class="nextButtonDiv">
+            <a class="buttonLook smallButton" th:href="@{'/venuedetails/' + ${next}}">&gt;</a>
+        </div>
 
-    <table>
-        <tr>
-            <td><p>Info :</p></td>
-            <td><a th:text="${venue.getLinkMoreInfo()}" th:href="${venue.getLinkMoreInfo()}">link venue</a></td>
-        </tr>
-        <tr>
-            <td><p>Capacity :</p></td>
-            <td><p th:text="${venue.getCapacity()}">0</p></td>
-        </tr>
-        <tr>
-            <td><p>Food provided? :</p></td>
-            <td><p th:text="${venue.isFoodProvided() ? 'yes' : 'no'}">no</p></td>
-        </tr>
-        <tr>
-            <td><p>Indoor? :</p></td>
-            <td><p th:text="${venue.isIndoor() ? 'yes' : 'no'}">no</p></td>
-        </tr>
-        <tr>
-            <td><p>Outdoor? :</p></td>
-            <td><p th:text="${venue.isOutdoor() ? 'yes' : 'no'}">no</p></td>
-        </tr>
-        <tr>
-            <td><p>Free Parking Available? :</p></td>
-            <td><p th:text="${venue.isFreeParkingAvailable() ? 'yes' : 'no'}">no</p></td>
-        </tr>
-        <tr>
-            <td><p>Distance Public Transport in km :</p></td>
-            <td><p th:text="${venue.getDistanceFromPublicTransportInKm()}">0.0</p></td>
-        </tr>
-        <tr>
-            <td><p>City :</p></td>
-            <td><p th:text="${venue.getCity()}">Name city</p></td>
-        </tr>
-    </table>
+        <h2 th:text="${venue.getVenueName()}">Name venue</h2>
+
+        <table>
+            <tr>
+                <td><p>Info :</p></td>
+                <td><a th:text="${venue.getLinkMoreInfo()}" th:href="${venue.getLinkMoreInfo()}">link venue</a></td>
+            </tr>
+            <tr>
+                <td><p>Capacity :</p></td>
+                <td><p th:text="${venue.getCapacity()}">0</p></td>
+            </tr>
+            <tr>
+                <td><p>Food provided? :</p></td>
+                <td><p th:text="${venue.isFoodProvided() ? 'yes' : 'no'}">no</p></td>
+            </tr>
+            <tr>
+                <td><p>Indoor? :</p></td>
+                <td><p th:text="${venue.isIndoor() ? 'yes' : 'no'}">no</p></td>
+            </tr>
+            <tr>
+                <td><p>Outdoor? :</p></td>
+                <td><p th:text="${venue.isOutdoor() ? 'yes' : 'no'}">no</p></td>
+            </tr>
+            <tr>
+                <td><p>Free Parking Available? :</p></td>
+                <td><p th:text="${venue.isFreeParkingAvailable() ? 'yes' : 'no'}">no</p></td>
+            </tr>
+            <tr>
+                <td><p>Distance Public Transport in km :</p></td>
+                <td><p th:text="${venue.getDistanceFromPublicTransportInKm()}">0.0</p></td>
+            </tr>
+            <tr>
+                <td><p>City :</p></td>
+                <td><p th:text="${venue.getCity()}">Name city</p></td>
+            </tr>
+        </table>
+    </div>
+
+    <div th:unless="${venue}">
+        <h2>No venue was chosen</h2>
+    </div>
 </main>
 
-
+<footer th:replace="fragments/footer :: footer">
+    <p>Hier komt de footer</p>
+</footer>
 
 </body>
 </html>

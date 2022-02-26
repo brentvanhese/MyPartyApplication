@@ -3,27 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Pay</title>
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{css/party.css}" href="/static/css/party.css"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}" href="/static/css/party.css"/>
 </head>
 <body>
 
-<header>
-    <h1>Let's party!</h1>
-    <nav>
-        <ul>
-            <li><a th:href="@{/}">Home</a></li>
-            <li><a th:href="@{/venuedetails}">Venuedetails</a></li>
-            <li><a th:href="@{/about}">About</a></li>
-            <li><a th:href="@{/newclient}">New client</a></li>
-            <li><a th:href="@{/showcode}">Show code</a></li>
-        </ul>
-    </nav>
+<header th:replace="fragments/header :: header">
+    <p>Hier komt de header</p>
 </header>
 
 <main>
+    <p th:if="${weekend}">Prettig weekend, je hebt het verdiend!</p>
+    <p th:unless="${weekend}">Voor je het weet is het weekend!</p>
+
     <p th:text="'De datum van vandaag is ' + ${dateToday}"></p>
     <p th:text="'De uiterste datum van betalen is ' + ${dateToPay}"></p>
 </main>
+
+<footer th:replace="fragments/footer :: footer">
+    <p>Hier komt de footer</p>
+</footer>
 
 </body>
 </html>
