@@ -13,19 +13,13 @@ import java.time.format.DateTimeFormatter;
 public class HomeController {
     @GetMapping({"/", "/home"})
     public String home(Model model) {
-        int myCalculatedValue = 34 * 62;
-        model.addAttribute("myCalculatedValue", myCalculatedValue);
+
         return "home";
     }
 
     @GetMapping("/about")
     public String about(Model model){
-        String myName = "Brent Van Hese";
-        model.addAttribute("myName", myName);
-        String myStreet = "Breedstraat 30";
-        model.addAttribute("myStreet", myStreet);
-        String myCity = "Sint-Niklaas";
-        model.addAttribute("myCity", myCity);
+
         return "about";
     }
 

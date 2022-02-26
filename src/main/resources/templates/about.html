@@ -13,14 +13,7 @@
 
 <main>
     <h2>About me</h2>
-    <p>This is all about me...</p>
-    <ol>
-        <li><p th:text="${myName}">onbekende naam</p></li>
-        <li><p th:text="${myStreet}">onbekende naam</p></li>
-        <li><p th:text="${myCity}">onbekende naam</p></li>
-    </ol>
 
-    <p th:text="'Ik ben ' + ${myName} + ' en mijn adres is ' + ${myStreet} + ' te ' + ${myCity} + '.' "></p>
 </main>
 
 <footer th:replace="fragments/footer :: footer">
