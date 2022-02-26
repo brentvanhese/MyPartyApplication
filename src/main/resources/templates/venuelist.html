@@ -17,11 +17,11 @@
     </div>
 
     <div th:each="venue: ${venues}">
-        <p class="venue">
+        <div class="venue">
             <a th:href="@{|/venuedetails/${venue.id}|}">
                 <span th:text="${venue.venueName}">venue name</span>
             </a>
-        </p>
+        </div>
     </div>
 </main>
 

@@ -49,18 +49,28 @@ tr, td{
 
 .venue{
     width: 500px;
-    height: 25px;
+    height: 50px;
     background-color: #EDC7CF;
-    color: #6A8E7F;
+    text-decoration: none;
     text-align: center;
-    margin: 25px auto;
-    padding-bottom: 15px;
+    margin: 0 auto
+}
+
+.venue:hover{
+    background-color: #6A8E7F;
 }
 
 .venue a{
+    color: #6A8E7F;
+    display: block;
+    margin: 10px auto;
+    width: 400px;
+    padding: 1em;
     text-decoration: none;
-    margin-top: 10px;
-    color: #6A8E7F
+}
+
+.venue a:hover{
+    color: #EDC7CF;
 }
 
 footer{
@@ -83,4 +93,18 @@ footer{
 .active{
     background-color: #6A8E7F;
     color: #EDC7CF
+}
+
+.prevButtonDiv{
+    float: left;
+}
+
+.nextButtonDiv{
+    float: right;
+}
+
+.smallButton{
+    display: block;
+    font-size: 1em;
+    padding: 0.5em;
 }
