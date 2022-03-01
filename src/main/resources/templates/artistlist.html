@@ -11,14 +11,41 @@
     <p>Hier komt de header</p>
 </header>
 
-<main>
-    <div th:each="artist: ${artists}">
-        <p class="venue">
-            <a th:href="@{|/artistdetails/${artist.id}|}">
-                <span th:text="${artist.artistName}">Artist name</span>
-            </a>
-        </p>
+<main class="buttonListGrid">
+    <div class="filters">
+        <div class="verticalmargin">
+            <span class="generalinfo" th:text="|${nrArtists} artists found|">0 artists found</span>
+        </div>
+        <div th:if="${showFilter}">
+            <div>
+                <a th:href="@{/artistlist}" class="button-look filterButton">-</a>
+            </div>
+            <form>
+                <input type="submit" value="search" class="button-look">
+                <div>
+                    <label for="artistName" class="filtername">Keyword</label>
+                    <input type="text" id="artistName" name="keyword" th:value="${keyword}">
+                </div>
+            </form>
+        </div>
+        <div th:unless="${showFilter}">
+            <div class="verticalmargin">
+                <a th:href="@{/artistlist/filter}" class="button-look filterButton">Filter</a>
+            </div>
+        </div>
     </div>
+
+    <div class="buttonList">
+        <div th:each="artist: ${artists}">
+            <p class="venue">
+                <a th:href="@{|/artistdetails/${artist.id}|}">
+                    <span th:text="${artist.artistName}">Artist name</span>
+                </a>
+            </p>
+        </div>
+    </div>
+
+
 </main>
 
 <footer th:replace="fragments/footer :: footer">

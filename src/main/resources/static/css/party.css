@@ -118,7 +118,7 @@ footer{
     background-color: beige;
 }
 
-.venuelistGrid{
+.buttonListGrid{
     display: grid;
     grid-template-areas:
     "filter venuelist";
@@ -129,6 +129,6 @@ footer{
     grid-area: filter;
 }
 
-.venuelist{
+.buttonList{
     grid-area: venuelist;
 }

@@ -11,7 +11,7 @@
     <p>Hier komt de header</p>
 </header>
 
-<main class="venuelistGrid">
+<main class="buttonListGrid">
     <div class="filters">
         <div class="verticalmargin">
             <span class="generalinfo" th:text="|${nrVenues} venues found|">0 venues found</span>
@@ -42,7 +42,7 @@
 
 
 
-    <div class="venuelist">
+    <div class="buttonList">
         <div th:each="venue: ${venues}">
             <div class="venue">
                 <a th:href="@{|/venuedetails/${venue.id}}">
