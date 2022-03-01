@@ -2,11 +2,14 @@ package be.thomasmore.party2.controllers;
 
 import be.thomasmore.party2.model.Venue;
 import be.thomasmore.party2.repositories.VenueRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
 
@@ -14,6 +17,8 @@ import java.util.Optional;
 public class VenueController {
     @Autowired
     private VenueRepository venueRepository;
+
+    private Logger logger = LoggerFactory.getLogger(VenueController.class);
 
     @GetMapping({"venuedetails", "/venuedetails/{id}"})
     public String venueDetails(Model model, @PathVariable(required = false) Integer id) {
@@ -46,7 +51,8 @@ public class VenueController {
     }
 
     @GetMapping("/venuelist/filter")
-    public String venueListWithFilter(Model model) {
+    public String venueListWithFilter(Model model, @RequestParam(required = false) Integer minimumCapacity) {
+        logger.info(String.format("venueListWithFilter -- min=%d", minimumCapacity));
         Iterable<Venue> allVenues = venueRepository.findAll();
         model.addAttribute("venues", allVenues);
         model.addAttribute("showFilter", true);
