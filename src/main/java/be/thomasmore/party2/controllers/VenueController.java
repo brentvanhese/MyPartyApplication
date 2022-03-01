@@ -56,7 +56,7 @@ public class VenueController {
         Iterable<Venue> allVenues = null;
         if(minimumCapacity==null && maximumCapacity!=null && maximumCapacity>=0)
         {
-            allVenues = venueRepository.findByCapacityIsBetween(0, maximumCapacity);
+            allVenues = venueRepository.findByCapacityLessThanEqual(maximumCapacity);
         }
         else if (minimumCapacity!=null && minimumCapacity>=0 && maximumCapacity == null){
             allVenues = venueRepository.findByCapacityIsGreaterThanEqual(minimumCapacity);
