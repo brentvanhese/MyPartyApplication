@@ -49,7 +49,7 @@ tr, td{
 
 .venue{
     width: 500px;
-    height: 50px;
+    height: 65px;
     background-color: #EDC7CF;
     text-decoration: none;
     text-align: center;
@@ -107,4 +107,28 @@ footer{
     display: block;
     font-size: 1em;
     padding: 0.5em;
+}
+
+.filterButton{
+    font-size: 1em;
+    padding: 0.2em;
+}
+
+.generalinfo{
+    background-color: beige;
+}
+
+.venuelistGrid{
+    display: grid;
+    grid-template-areas:
+    "filter venuelist";
+    grid-template-columns: 20em auto;
+}
+
+.filters{
+    grid-area: filter;
+}
+
+.venuelist{
+    grid-area: venuelist;
 }

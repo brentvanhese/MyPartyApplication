@@ -11,16 +11,44 @@
     <p>Hier komt de header</p>
 </header>
 
-<main>
-    <div th:replace="fragments/filter :: filter">
-        Hier komen de filters
+<main class="venuelistGrid">
+    <div class="filters">
+        <div class="verticalmargin">
+            <span class="generalinfo" th:text="|${nrVenues} venues found|">0 venues found</span>
+        </div>
+        <div th:if="${showFilter}">
+            <div>
+                <a th:href="@{/venuelist}" class="button-look filterButton">-</a>
+            </div>
+            <form>
+                <input type="submit" value="search" class="button-look">
+                <h3>capacity</h3>
+                <div>
+                    <label for="minCapacity" class="filtername">min</label>
+                    <input type="number" id="minCapacity" name="minimumCapacity" value="0" step="50"> <span>persons</span>
+                </div>
+            </form>
+        </div>
+        <div class="filters" th:unless="${showFilter}">
+            <div class="verticalmargin">
+                <a th:href="@{/venuelist/filter}" class="button-look filterButton">Filter</a>
+            </div>
+        </div>
     </div>
 
-    <div th:each="venue: ${venues}">
-        <div class="venue">
-            <a th:href="@{|/venuedetails/${venue.id}|}">
-                <span th:text="${venue.venueName}">venue name</span>
-            </a>
+
+
+    <div class="venuelist">
+        <div th:each="venue: ${venues}">
+            <div class="venue">
+                <a th:href="@{|/venuedetails/${venue.id}}">
+                    <span th:text="${venue.venueName}">venue name</span>
+                    <div>
+                        <span class="generalinfo" th:text="|Capacity: ${venue.capacity}|">Capacity: 0</span>
+                    </div>
+                </a>
+            </div>
+
         </div>
     </div>
 </main>
