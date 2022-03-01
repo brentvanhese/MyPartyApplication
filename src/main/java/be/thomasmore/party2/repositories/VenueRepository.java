@@ -10,7 +10,7 @@ public interface VenueRepository extends CrudRepository<Venue, Integer> {
     Iterable<Venue> findByIndoor(boolean isIndoor);
     Iterable<Venue> findByCapacityLessThan(int equal);
     Iterable<Venue> findByCapacityIsBetween(int less, int equal);
-    Iterable<Venue> findByCapacityGreaterThan(int equal);
+    Iterable<Venue> findByCapacityIsGreaterThanEqual(int equal);
     Optional<Venue> findFirstByIdLessThanOrderByIdDesc(Integer id);
     Optional<Venue> findFirstByIdGreaterThanOrderById(Integer id);
     Optional<Venue> findFirstByOrderByIdDesc();

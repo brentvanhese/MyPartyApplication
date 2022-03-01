@@ -25,7 +25,11 @@
                 <h3>capacity</h3>
                 <div>
                     <label for="minCapacity" class="filtername">min</label>
-                    <input type="number" id="minCapacity" name="minimumCapacity" value="0" step="50"> <span>persons</span>
+                    <input type="number" id="minCapacity" name="minimumCapacity" th:value="${minCapacity}" value="0" step="50"> <span>persons</span>
+                </div>
+                <div>
+                    <label for="maxCapacity" class="filtername">max</label>
+                    <input type="number" id="maxCapacity" name="maximumCapacity" th:value="${maxCapacity}" value="0" step="50"> <span>persons</span>
                 </div>
             </form>
         </div>
