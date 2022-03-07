@@ -1,9 +1,7 @@
 package be.thomasmore.party2.controllers;
 
 import be.thomasmore.party2.model.Artist;
-import be.thomasmore.party2.model.Venue;
 import be.thomasmore.party2.repositories.ArtistRepository;
-import be.thomasmore.party2.repositories.VenueRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.Collection;
 import java.util.Optional;
 
 @Controller
@@ -36,7 +32,7 @@ public class ArtistController {
         if(keyword==null){
             allArtists = artistRepository.findAll();
         }else{
-            allArtists = artistRepository.findByArtistNameContainsIgnoreCase(keyword);
+            allArtists = artistRepository.findByKeyword(keyword);
         }
         model.addAttribute("showFilter", true);
         model.addAttribute("artists", allArtists);

@@ -44,35 +44,25 @@ public class VenueController {
 
     @GetMapping({"/venuelist", "/venuelist/{something}"})
     public String venuelist(Model model) {
-        Iterable<Venue> allVenues = venueRepository.findAll();
+        Iterable<Venue> allVenues = venueRepository.findAllVenues();
         model.addAttribute("venues", allVenues);
         model.addAttribute("nrVenues", venueRepository.count());
         return "venuelist";
     }
 
     @GetMapping("/venuelist/filter")
-    public String venueListWithFilter(Model model, @RequestParam(required = false) Integer minimumCapacity, @RequestParam(required = false) Integer maximumCapacity) {
+    public String venueListWithFilter(Model model, @RequestParam(required = false) Integer minimumCapacity, @RequestParam(required = false) Integer maximumCapacity, @RequestParam(required = false) Double maxDistance, @RequestParam(required = false) String filterFood, @RequestParam(required = false) String filterIndoor, @RequestParam(required = false) String filterOutdoor) {
         logger.info(String.format("venueListWithFilter -- min=%d", minimumCapacity));
-        Iterable<Venue> allVenues = null;
-        if(minimumCapacity==null && maximumCapacity!=null && maximumCapacity>=0)
-        {
-            allVenues = venueRepository.findByCapacityLessThanEqual(maximumCapacity);
-        }
-        else if (minimumCapacity!=null && minimumCapacity>=0 && maximumCapacity == null){
-            allVenues = venueRepository.findByCapacityIsGreaterThanEqual(minimumCapacity);
-        }
-        else if (minimumCapacity != null && minimumCapacity >= 0 && maximumCapacity >= 0){
-            allVenues = venueRepository.findByCapacityIsBetween(minimumCapacity, maximumCapacity);
-        }
-        else{
-            allVenues = venueRepository.findAll();
-        }
+        Iterable<Venue> allVenues = venueRepository.findByCapacityBetweenQuery(minimumCapacity, maximumCapacity, maxDistance, filterFood, filterIndoor, filterOutdoor);
         model.addAttribute("venues", allVenues);
         model.addAttribute("nrVenues", allVenues.spliterator().getExactSizeIfKnown());
         model.addAttribute("showFilter", true);
         model.addAttribute("minCapacity", minimumCapacity);
         model.addAttribute("maxCapacity", maximumCapacity);
-
+        model.addAttribute("maxDistance", maxDistance);
+        model.addAttribute("foodProvided", filterFood);
+        model.addAttribute("indoor", filterIndoor);
+        model.addAttribute("outdoor", filterOutdoor);
         return "venuelist";
     }
 }
