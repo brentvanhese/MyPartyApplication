@@ -1,0 +1,54 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="nl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Animaldetails</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}" href="/static/css/party.css"/>
+</head>
+<body>
+
+<header th:replace="fragments/header :: header">
+    <p>Hier komt de header</p>
+</header>
+
+<main>
+    <div th:if="${animal}">
+        <h2 th:text="'Animal : ' + ${animal.name}">Name animal</h2>
+
+        <table>
+            <tr>
+                <td><p>City :</p></td>
+                <td><a th:text="${animal.city}">City animal</a></td>
+            </tr>
+            <tr th:if="${animal.bio != null && !animal.bio.equals('')}">
+                <td><p>Bio :</p></td>
+                <td><p th:text="${animal.bio}">Bio animal</p></td>
+            </tr>
+        </table>
+
+        <div th:if="${parties.size() != 0}">
+            <h2>Going to</h2>
+            <div class="buttonList">
+                <div th:each="party: ${parties}">
+                    <p class="venue">
+                        <a th:href="@{|/partydetails/${party.id}|}">
+                            <span th:text="${party.name}">Party name</span>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div th:unless="${animal}">
+        <h2>Animal: unknow</h2>
+    </div>
+</main>
+
+<footer th:replace="fragments/footer :: footer">
+    <p>Hier komt de footer</p>
+</footer>
+
+</body>
+</html>

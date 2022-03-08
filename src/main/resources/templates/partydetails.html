@@ -63,7 +63,7 @@
             <div class="buttonList">
                 <div th:each="animal: ${animals}">
                     <p class="venue">
-                        <a th:href="@{|/artistdetails/${animal.id}|}">
+                        <a th:href="@{|/animaldetails/${animal.id}|}">
                             <span th:text="${animal.name}">Animal name</span>
                         </a>
                     </p>
