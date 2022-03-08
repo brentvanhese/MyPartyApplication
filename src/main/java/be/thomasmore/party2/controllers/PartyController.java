@@ -29,6 +29,7 @@ public class PartyController {
         Optional<Party> optionalParty = partyRepository.findById(id);
         if (optionalParty.isPresent()) {
             model.addAttribute("party", optionalParty.get());
+            model.addAttribute("artists", optionalParty.get().getArtists());
         }
         return "partydetails";
     }

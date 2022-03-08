@@ -37,6 +37,17 @@
                 <td><p th:text="${party.extraInfo}">Extra info party</p></td>
             </tr>
         </table>
+
+        <h2>Line up</h2>
+        <div class="buttonList">
+            <div th:each="artist: ${artists}">
+                <p class="venue">
+                    <a th:href="@{|/artistdetails/${artist.id}|}">
+                        <span th:text="${artist.artistName}">Artist name</span>
+                    </a>
+                </p>
+            </div>
+        </div>
     </div>
 
     <div th:unless="${party}">
