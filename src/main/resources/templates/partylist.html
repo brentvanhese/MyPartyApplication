@@ -1,0 +1,39 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Parties</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}" href="/static/css/party.css"/>
+</head>
+<body>
+
+<header th:replace="fragments/header :: header">
+    <p>Hier komt de header</p>
+</header>
+
+<main class="buttonListGrid">
+    <div class="filters">
+        <div class="verticalmargin">
+            <span class="generalinfo" th:text="|${nrParties} parties found|">0 parties found</span>
+        </div>
+    </div>
+
+    <div class="buttonList">
+        <div th:each="party: ${parties}">
+            <p class="venue">
+                <a th:href="@{|/partydetails/${party.id}|}">
+                    <span th:text="${party.name}">Party name</span>
+                </a>
+            </p>
+        </div>
+    </div>
+
+
+</main>
+
+<footer th:replace="fragments/footer :: footer">
+    <p>Hier komt de footer</p>
+</footer>
+
+</body>
+</html>

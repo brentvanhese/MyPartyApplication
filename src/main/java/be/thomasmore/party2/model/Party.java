@@ -9,7 +9,7 @@ public class Party {
     private int id;
     private String name;
     private Integer pricePresaleInEur;
-    private Integer princeInEur;
+    private Integer priceInEur;
     private String extraInfo;
     @Temporal(TemporalType.DATE)
     private Date date;
@@ -41,12 +41,12 @@ public class Party {
         this.pricePresaleInEur = pricePresaleInEur;
     }
 
-    public Integer getPrinceInEur() {
-        return princeInEur;
+    public Integer getPriceInEur() {
+        return priceInEur;
     }
 
-    public void setPrinceInEur(Integer princeInEur) {
-        this.princeInEur = princeInEur;
+    public void setPriceInEur(Integer princeInEur) {
+        this.priceInEur = princeInEur;
     }
 
     public String getExtraInfo() {
@@ -71,5 +71,9 @@ public class Party {
 
     public void setDoors(Date doors) {
         this.doors = doors;
+    }
+
+    public Venue getVenue() {
+        return venue;
     }
 }
