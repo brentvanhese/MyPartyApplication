@@ -1,7 +1,6 @@
 package be.thomasmore.party2.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -12,8 +11,12 @@ public class Party {
     private Integer pricePresaleInEur;
     private Integer princeInEur;
     private String extraInfo;
+    @Temporal(TemporalType.DATE)
     private Date date;
+    @Temporal(TemporalType.TIME)
     private Date doors;
+    @ManyToOne
+    private Venue venue;
 
     public Party() {
     }
