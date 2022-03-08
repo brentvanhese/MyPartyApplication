@@ -1,9 +1,6 @@
 package be.thomasmore.party2.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
@@ -17,7 +14,7 @@ public class Artist {
     private String bio ;
     @Column(length = 1000)
     private String portfolio;
-    @ManyToMany(mappedBy = "artists")
+    @ManyToMany(mappedBy = "artists", fetch = FetchType.LAZY)
     private Collection<Party> parties;
 
     public Artist() {

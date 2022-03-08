@@ -1,6 +1,7 @@
 package be.thomasmore.party2.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import java.util.Collection;
@@ -12,7 +13,7 @@ public class Animal {
     private String name;
     private String city;
     private String bio;
-    @ManyToMany(mappedBy = "animals")
+    @ManyToMany(mappedBy = "animals", fetch = FetchType.LAZY)
     private Collection<Party> parties;
 
     public Animal() {
