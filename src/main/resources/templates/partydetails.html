@@ -13,7 +13,7 @@
 
 <main>
     <div th:if="${party}">
-        <h2 th:text="${party.name}">Name party</h2>
+        <h2 th:text="'Party : ' + ${party.name}">Name party</h2>
         <h3 th:text="${party.date}">Date party</h3>
         <table>
             <tr>

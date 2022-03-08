@@ -56,6 +56,19 @@
                 <td><p th:text="${venue.getCity()}">Name city</p></td>
             </tr>
         </table>
+
+        <h2 th:text="'Parties in ' + ${venue.venueName}">Parties</h2>
+        <div class="buttonList">
+            <div th:each="party: ${parties}">
+                <p class="venue">
+                    <a th:href="@{|/partydetails/${party.id}|}">
+                        <span th:text="${party.name}">Party name</span>
+                    </a>
+                </p>
+            </div>
+        </div>
+
+
     </div>
 
     <div th:unless="${venue}">
