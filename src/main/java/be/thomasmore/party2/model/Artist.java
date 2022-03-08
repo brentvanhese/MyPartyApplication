@@ -71,4 +71,12 @@ public class Artist {
     public void setPortfolio(String portfolio) {
         this.portfolio = portfolio;
     }
+
+    public Collection<Party> getParties() {
+        return parties;
+    }
+
+    public void setParties(Collection<Party> parties) {
+        this.parties = parties;
+    }
 }

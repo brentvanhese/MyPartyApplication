@@ -47,6 +47,7 @@ public class ArtistController {
         Optional<Artist> optionalArtist = artistRepository.findById(id);
         if (optionalArtist.isPresent()) {
             model.addAttribute("artist", optionalArtist.get());
+            model.addAttribute("parties", optionalArtist.get().getParties());
         }
         return "artistdetails";
     }
