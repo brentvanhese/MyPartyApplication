@@ -13,6 +13,13 @@
 
 <main>
     <div th:if="${artist}">
+        <div th:if="${prev!=null}" class="prevButtonDiv">
+            <a class="button-look smallButton" th:href="@{'/artistdetails/' + ${prev}}">&lt;</a>
+        </div>
+        <div th:if="${next!=null}" class="nextButtonDiv">
+            <a class="button-look smallButton" th:href="@{'/artistdetails/' + ${next}}">&gt;</a>
+        </div>
+
         <h2 th:text="${artist.getArtistName()}">Name venue</h2>
 
         <table>
@@ -34,16 +41,19 @@
             </tr>
         </table>
 
-        <h2 th:text="'Parties by ' + ${artist.artistName}">Parties from artist</h2>
-        <div class="buttonList">
-            <div th:each="party: ${parties}">
-                <p class="venue">
-                    <a th:href="@{|/partydetails/${party.id}|}">
-                        <span th:text="${party.name}">Party name</span>
-                    </a>
-                </p>
+        <div th:if="${parties.size() != 0}">
+            <h2 th:text="'Parties by ' + ${artist.artistName}">Parties from artist</h2>
+            <div class="buttonList">
+                <div th:each="party: ${parties}">
+                    <p class="venue">
+                        <a th:href="@{|/partydetails/${party.id}|}">
+                            <span th:text="${party.name}">Party name</span>
+                        </a>
+                    </p>
+                </div>
             </div>
         </div>
+
     </div>
 
     <div th:unless="${artist}">

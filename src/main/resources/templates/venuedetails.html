@@ -57,16 +57,19 @@
             </tr>
         </table>
 
-        <h2 th:text="'Parties in ' + ${venue.venueName}">Parties</h2>
-        <div class="buttonList">
-            <div th:each="party: ${parties}">
-                <p class="venue">
-                    <a th:href="@{|/partydetails/${party.id}|}">
-                        <span th:text="${party.name}">Party name</span>
-                    </a>
-                </p>
+        <div th:if="${parties.size() != 0}">
+            <h2 th:text="'Parties in ' + ${venue.venueName}">Parties</h2>
+            <div class="buttonList">
+                <div th:each="party: ${parties}">
+                    <p class="venue">
+                        <a th:href="@{|/partydetails/${party.id}|}">
+                            <span th:text="${party.name}">Party name</span>
+                        </a>
+                    </p>
+                </div>
             </div>
         </div>
+
 
 
     </div>

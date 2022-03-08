@@ -1,5 +1,6 @@
 package be.thomasmore.party2.controllers;
 
+import be.thomasmore.party2.model.Artist;
 import be.thomasmore.party2.model.Party;
 import be.thomasmore.party2.repositories.PartyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +28,22 @@ public class PartyController {
     public String partydetails(Model model, @PathVariable(required = false) Integer id) {
         if (id==null) return "venuedetails";
         Optional<Party> optionalParty = partyRepository.findById(id);
+        Optional<Party> optionalPrev = partyRepository.findFirstByIdLessThanOrderByIdDesc(id);
+        Optional<Party> optionalNext = partyRepository.findFirstByIdGreaterThanOrderById(id);
         if (optionalParty.isPresent()) {
             model.addAttribute("party", optionalParty.get());
             model.addAttribute("artists", optionalParty.get().getArtists());
+            model.addAttribute("animals", optionalParty.get().getAnimals());
+        }
+        if (optionalPrev.isPresent()) {
+            model.addAttribute("prev", optionalPrev.get().getId());
+        } else {
+            model.addAttribute("prev", partyRepository.findFirstByOrderByIdDesc().get().getId());
+        }
+        if (optionalNext.isPresent()) {
+            model.addAttribute("next", optionalNext.get().getId());
+        } else {
+            model.addAttribute("next", partyRepository.findFirstByOrderByIdAsc().get().getId());
         }
         return "partydetails";
     }

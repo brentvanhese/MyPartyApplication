@@ -1,6 +1,7 @@
 package be.thomasmore.party2.controllers;
 
 import be.thomasmore.party2.model.Artist;
+import be.thomasmore.party2.model.Venue;
 import be.thomasmore.party2.repositories.ArtistRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,9 +46,21 @@ public class ArtistController {
     public String artistDetails(Model model, @PathVariable(required = false) Integer id) {
         if (id==null) return "venuedetails";
         Optional<Artist> optionalArtist = artistRepository.findById(id);
+        Optional<Artist> optionalPrev = artistRepository.findFirstByIdLessThanOrderByIdDesc(id);
+        Optional<Artist> optionalNext = artistRepository.findFirstByIdGreaterThanOrderById(id);
         if (optionalArtist.isPresent()) {
             model.addAttribute("artist", optionalArtist.get());
             model.addAttribute("parties", optionalArtist.get().getParties());
+        }
+        if (optionalPrev.isPresent()) {
+            model.addAttribute("prev", optionalPrev.get().getId());
+        } else {
+            model.addAttribute("prev", artistRepository.findFirstByOrderByIdDesc().get().getId());
+        }
+        if (optionalNext.isPresent()) {
+            model.addAttribute("next", optionalNext.get().getId());
+        } else {
+            model.addAttribute("next", artistRepository.findFirstByOrderByIdAsc().get().getId());
         }
         return "artistdetails";
     }
