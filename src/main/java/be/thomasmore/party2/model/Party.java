@@ -15,7 +15,7 @@ public class Party {
     private Date date;
     @Temporal(TemporalType.TIME)
     private Date doors;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Venue venue;
 
     public Party() {

@@ -1,0 +1,52 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="nl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Partydetails</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}" href="/static/css/party.css"/>
+</head>
+<body>
+
+<header th:replace="fragments/header :: header">
+    <p>Hier komt de header</p>
+</header>
+
+<main>
+    <div th:if="${party}">
+        <h2 th:text="${party.name}">Name party</h2>
+        <h3 th:text="${party.date}">Date party</h3>
+        <table>
+            <tr>
+                <td><p>Where :</p></td>
+                <td><a th:text="${party.venue.venueName} + ' ( ' + ${party.venue.city} + ', ' + ${party.venue.distanceFromPublicTransportInKm} + ' km van openbaar vervoer)'" th:href="@{|/venuedetails/${party.venue.id}|}">price party</a></td>
+            </tr>
+            <tr>
+                <td><p>Price :</p></td>
+                <td>
+                    <span th:if="${party.pricePresaleInEur} == null">gratis</span>
+                    <span th:if="${party.pricePresaleInEur} != null"><a th:text="${party.pricePresaleInEur} + '€ (presale) / ' + ${party.priceInEur} + '€'">price party</a></span>
+
+                </td>
+            </tr>
+            <tr>
+                <td><p>Doors :</p></td>
+                <td><p th:text="${party.doors}">Doors party</p></td>
+            </tr>
+            <tr th:if="${party.extraInfo}==''">
+                <td><p>Extra info :</p></td>
+                <td><p th:text="${party.extraInfo}">Extra info party</p></td>
+            </tr>
+        </table>
+    </div>
+
+    <div th:unless="${party}">
+        <h2>Party: unknow</h2>
+    </div>
+</main>
+
+<footer th:replace="fragments/footer :: footer">
+    <p>Hier komt de footer</p>
+</footer>
+
+</body>
+</html>
