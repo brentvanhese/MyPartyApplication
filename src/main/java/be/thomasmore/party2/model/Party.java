@@ -1,5 +1,7 @@
 package be.thomasmore.party2.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
@@ -13,8 +15,10 @@ public class Party {
     private Integer priceInEur;
     private String extraInfo;
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
     @Temporal(TemporalType.TIME)
+    @DateTimeFormat(pattern = "HH:mm")
     private Date doors;
     @ManyToOne(fetch = FetchType.LAZY)
     private Venue venue;

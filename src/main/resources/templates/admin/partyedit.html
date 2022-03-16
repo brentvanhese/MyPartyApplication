@@ -30,8 +30,15 @@
             </div>
 
             <div>
-                <p>Where :</p>
-                <a th:text="${party.venue.venueName} + ' ( ' + ${party.venue.city} + ', ' + ${party.venue.distanceFromPublicTransportInKm} + ' km van openbaar vervoer)'" th:href="@{|/venuedetails/${party.venue.id}|}">price party</a>
+                <label for="partyDate">Date: </label>
+                <input type="date" id="partyDate" th:field="*{date}">
+            </div>
+
+            <div>
+                <label for="partyVenue">Where: </label>
+                <select id="partyVenue">
+                    <option th:each="v : ${venues}" th:selected="*{venue}" th:value="${v.id}" th:text="${v.venueName}"></option>
+                </select>
             </div>
 
             <div>
@@ -45,8 +52,8 @@
             </div>
 
             <div>
-                <p>Doors :</p>
-                <p th:text="${party.doors}">Doors party</p>
+                <label for="partyDoors">Doors: </label>
+                <input type="time" id="partyDoors" th:field="*{doors}">
             </div>
 
             <div>
