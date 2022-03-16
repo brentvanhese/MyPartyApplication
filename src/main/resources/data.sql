@@ -187,42 +187,42 @@ INSERT INTO PARTY
 (ID, NAME, PRICE_PRESALE_IN_EUR, PRICE_IN_EUR, EXTRA_INFO, DATE, DOORS,
  VENUE_ID)
 VALUES
-    (1, 'Big Spring Party', 6, 10, '1 cocktail included',
+    (nextval('PARTY_SEQ'), 'Big Spring Party', 6, 10, '1 cocktail included',
      '2021-03-21', '10:00', 1);
 
 INSERT INTO PARTY
 (ID, name, price_presale_in_eur, price_in_eur, extra_info, date, doors,
  venue_Id)
 VALUES
-    (2, 'Liberty 2021', 4, 6, 'free vestiaire, viplounge',
+    (nextval('PARTY_SEQ'), 'Liberty 2021', 4, 6, 'free vestiaire, viplounge',
      '2021-04-3', '22:00', 2);
 
 INSERT INTO PARTY
 (ID, name, price_presale_in_eur, price_in_eur, extra_info, date, doors,
  venue_Id)
 VALUES
-    (3, 'Uppercuts', null, null, ' ',
+    (nextval('PARTY_SEQ'), 'Uppercuts', null, null, ' ',
      '2021-03-14', '21:00', 4);
 
 INSERT INTO PARTY
 (ID, name, price_presale_in_eur, price_in_eur, extra_info, date, doors,
  venue_Id)
 VALUES
-    (4, 'Zoetzuur', null, null, 'Zoete house / Zure techno',
+    (nextval('PARTY_SEQ'), 'Zoetzuur', null, null, 'Zoete house / Zure techno',
      '2021-03-21', '21:00', 4);
 
 INSERT INTO PARTY
 (ID, name, price_presale_in_eur, price_in_eur, extra_info, date, doors,
  venue_Id)
 VALUES
-    (5, 'Oldies but Goldies', null, null, 'afterparty@home van THE BOX!',
+    (nextval('PARTY_SEQ'), 'Oldies but Goldies', null, null, 'afterparty@home van THE BOX!',
      '2020-03-28', '21:00', 4);
 
 INSERT INTO PARTY
 (ID, name, price_presale_in_eur, price_in_eur, extra_info, date, doors,
  venue_Id)
 VALUES
-    (6, 'Tommorowland', 325, 395, 'Zeker de echte tommorowland!',
+    (nextval('PARTY_SEQ'), 'Tommorowland', 325, 395, 'Zeker de echte tommorowland!',
      '2022-04-01', '16:00', 12);
 
 --party artist

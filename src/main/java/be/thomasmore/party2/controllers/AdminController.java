@@ -22,11 +22,13 @@ public class AdminController {
     private VenueRepository venueRepository;
 
     @ModelAttribute("party")
-    public Party findParty(@PathVariable Integer id) {
+    public Party findParty(@PathVariable(required = false) Integer id) {
         logger.info("findParty "+id);
-        Optional<Party> optionalParty = partyRepository.findById(id);
-        if (optionalParty.isPresent()) return optionalParty.get();
-        return null;
+        if (id!=null) {
+            Optional<Party> optionalParty = partyRepository.findById(id);
+            if (optionalParty.isPresent()) return optionalParty.get();
+        }
+        return new Party();
     }
 
     @GetMapping("/partyedit/{id}")
@@ -41,5 +43,18 @@ public class AdminController {
         logger.info("partyEditPost " + id + " -- new name=" + party.getName());
         partyRepository.save(party);
         return "redirect:/partydetails/"+id;
+    }
+
+    @GetMapping("/partynew")
+    public String partyNew(Model model) {
+        model.addAttribute("venues", venueRepository.findAllVenues());
+        return "admin/partynew";
+    }
+
+    @PostMapping("/partynew")
+    public String partyNewPost(Model model, @ModelAttribute("party") Party party) {
+        logger.info("partyNewPost -- new name=" + party.getName() + ", date=" + party.getDate());
+        partyRepository.save(party);
+        return "redirect:/partydetails/"+party.getId();
     }
 }

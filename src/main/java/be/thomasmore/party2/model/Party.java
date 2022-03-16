@@ -8,8 +8,10 @@ import java.util.Date;
 
 @Entity
 public class Party {
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "party_generator")
+    @SequenceGenerator(name = "party_generator", sequenceName = "party_seq", allocationSize = 1)
     @Id
-    private int id;
+    private Integer id;
     private String name;
     private Integer pricePresaleInEur;
     private Integer priceInEur;
@@ -30,7 +32,7 @@ public class Party {
     public Party() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

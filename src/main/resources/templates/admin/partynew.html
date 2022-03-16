@@ -2,7 +2,7 @@
 <html lang="nl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Edit party</title>
+    <title>New party</title>
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}" href="/static/css/party.css"/>
 </head>
 <body>
@@ -12,17 +12,16 @@
 </header>
 
 <main>
-    <div th:if="${party}">
-
-        <form th:action="@{|/admin/partyedit/${party.id}|}" th:object="${party}" method="post">
+    <div th:object="${party}">
+        <form th:action="@{|/admin/partynew|}" method="post">
             <div class="nextButtonDiv">
-                <a class="button-look smallButton" th:href="@{'/partydetails/' + ${party.id}}">Back</a>
+                <a class="button-look smallButton" th:href="@{'/partylist/'}">Back</a>
             </div>
             <div class="nextButtonDiv">
-                <input type="submit" value="Save" class="button-look smallButton">
+                <input type="submit" value="Create" class="button-look smallButton">
             </div>
 
-            <h2 th:text="'Party : ' + ${party.name}">Name party</h2>
+            <h2>New party</h2>
 
             <div>
                 <label for="partyName">Name: </label>
@@ -36,8 +35,8 @@
 
             <div>
                 <label for="partyVenue">Where: </label>
-                <select id="partyVenue" >
-                    <option th:each="v : ${venues}" th:selected="*{venue.venueName}" th:value="${v.id}" th:text="${v.venueName}"></option>
+                <select id="partyVenue" th:each="v : ${venues}">
+                    <option th:value="${v.id}" th:text="${v.venueName}"></option>
                 </select>
             </div>
 
@@ -61,10 +60,6 @@
                 <textarea id="partyExtraInfo" rows="5" cols="50" th:field="*{extraInfo}"></textarea>
             </div>
         </form>
-    </div>
-
-    <div th:unless="${party}">
-        <h2>Party: unknow</h2>
     </div>
 </main>
 
