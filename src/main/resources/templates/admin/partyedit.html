@@ -1,0 +1,69 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="nl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Partydetails</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}" href="/static/css/party.css"/>
+</head>
+<body>
+
+<header th:replace="fragments/header :: header">
+    <p>Hier komt de header</p>
+</header>
+
+<main>
+    <div th:if="${party}">
+
+        <form th:action="@{|/admin/partyedit/${party.id}|}" th:object="${party}" method="post">
+            <div class="nextButtonDiv">
+                <a class="button-look smallButton" th:href="@{'/partydetails/' + ${party.id}}">Back</a>
+            </div>
+            <div class="nextButtonDiv">
+                <input type="submit" value="Save" class="button-look smallButton">
+            </div>
+
+            <h2 th:text="'Party : ' + ${party.name}">Name party</h2>
+
+            <div>
+                <label for="partyName">Name: </label>
+                <input type="text" id="partyName" th:field="*{name}">
+            </div>
+
+            <div>
+                <p>Where :</p>
+                <a th:text="${party.venue.venueName} + ' ( ' + ${party.venue.city} + ', ' + ${party.venue.distanceFromPublicTransportInKm} + ' km van openbaar vervoer)'" th:href="@{|/venuedetails/${party.venue.id}|}">price party</a>
+            </div>
+
+            <div>
+                <label for="partyPrice">Price: </label>
+                <input type="number" step="1" id="partyPrice" th:field="*{priceInEur}"> <span>€</span>
+            </div>
+
+            <div>
+                <label for="partyPricePresale">Presale price: </label>
+                <input type="number" step="1" id="partyPricePresale" th:field="*{pricePresaleInEur}"> <span>€</span>
+            </div>
+
+            <div>
+                <p>Doors :</p>
+                <p th:text="${party.doors}">Doors party</p>
+            </div>
+
+            <div>
+                <label for="partyExtraInfo">Extra info: </label>
+                <textarea id="partyExtraInfo" rows="5" cols="50" th:field="*{extraInfo}"></textarea>
+            </div>
+        </form>
+    </div>
+
+    <div th:unless="${party}">
+        <h2>Party: unknow</h2>
+    </div>
+</main>
+
+<footer th:replace="fragments/footer :: footer">
+    <p>Hier komt de footer</p>
+</footer>
+
+</body>
+</html>

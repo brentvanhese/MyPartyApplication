@@ -34,6 +34,7 @@ public class PartyController {
             model.addAttribute("party", optionalParty.get());
             model.addAttribute("artists", optionalParty.get().getArtists());
             model.addAttribute("animals", optionalParty.get().getAnimals());
+            model.addAttribute("id", optionalParty.get().getId());
         }
         if (optionalPrev.isPresent()) {
             model.addAttribute("prev", optionalPrev.get().getId());
