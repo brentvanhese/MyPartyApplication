@@ -35,8 +35,8 @@
 
             <div>
                 <label for="partyVenue">Where: </label>
-                <select id="partyVenue" th:each="v : ${venues}">
-                    <option th:value="${v.id}" th:text="${v.venueName}"></option>
+                <select id="partyVenue" class="editfield" th:field="*{venue}">
+                    <option th:each="v : ${venues}" th:value="${v.id}" th:text="${v.venueName}"></option>
                 </select>
             </div>
 
