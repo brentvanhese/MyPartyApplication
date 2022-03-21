@@ -16,6 +16,18 @@
         <div th:if="${prev!=null}" class="prevButtonDiv">
             <a class="button-look smallButton" th:href="@{'/partydetails/' + ${prev}}">&lt;</a>
         </div>
+        <div th:if="${animal!=null && party!=null}">
+            <form th:action="@{/partygoing}" method="post">
+                <div th:if="${!party.getAnimals().contains(animal)}" class="oneinput goingButtonDiv">
+                    <input type="submit" value="going" class="smallButton buttonLook">
+                </div>
+                <div th:if="${party.getAnimals().contains(animal)}" class="oneinput goingButtonDiv">
+                    <input type="submit" value="not going" class="smallButton buttonLook">
+                </div>
+                <input type="hidden" name="partyId" th:value="${party.id}">
+                <input type="hidden" name="animalId" th:value="${animal.id}">
+            </form>
+        </div>
         <div th:if="${next!=null}" class="nextButtonDiv">
             <a class="button-look smallButton" th:href="@{'/partydetails/' + ${next}}">&gt;</a>
         </div>

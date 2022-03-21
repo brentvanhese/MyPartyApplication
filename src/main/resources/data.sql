@@ -233,18 +233,43 @@ INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID) VALUES (3, 3);
 INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID) VALUES (3, 5);
 INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID) VALUES (4, 5);
 
+--user
+INSERT INTO user(
+    ID, USERNAME, PASSWORD, ROLE)
+VALUES (nextval('USER_SEQ'), 'admin', '$2a$10$quITr64cP5eENwFJsorppukD5z18iq13GQ97Ke9v58E69UftZ3vt2', 'ROLE_ADMIN');
+
+INSERT INTO user(
+    ID, USERNAME, PASSWORD, ROLE)
+VALUES (nextval('USER_SEQ'), 'daria', '$2a$10$XyWeDv22PpxAplDmI0pqUu7Qo1NdlrXracPeo.HbtA61UvLGTaYk6', 'ROLE_USER');
+
+INSERT INTO user(
+    ID, USERNAME, PASSWORD, ROLE)
+VALUES (nextval('USER_SEQ'), 'giraf', '$2a$10$XyWeDv22PpxAplDmI0pqUu7Qo1NdlrXracPeo.HbtA61UvLGTaYk6', 'ROLE_USER');
+
+INSERT INTO user(
+    ID, USERNAME, PASSWORD, ROLE)
+VALUES (nextval('USER_SEQ'), 'olifant', '$2a$10$XyWeDv22PpxAplDmI0pqUu7Qo1NdlrXracPeo.HbtA61UvLGTaYk6', 'ROLE_USER');
+
+INSERT INTO user(
+    ID, USERNAME, PASSWORD, ROLE)
+VALUES (nextval('USER_SEQ'), 'dromedaris', '$2a$10$XyWeDv22PpxAplDmI0pqUu7Qo1NdlrXracPeo.HbtA61UvLGTaYk6', 'ROLE_USER');
+
+INSERT INTO user(
+    ID, USERNAME, PASSWORD, ROLE)
+VALUES (nextval('USER_SEQ'), 'draak', '$2a$10$XyWeDv22PpxAplDmI0pqUu7Qo1NdlrXracPeo.HbtA61UvLGTaYk6', 'ROLE_USER');
+
 --animal
-INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-VALUES (1, 'Gillende Giraf', 'Antwerpen', 'Zit al gans mijn levin in de zoo van Antwerpen :-(');
+INSERT INTO ANIMAL (ID, NAME, CITY, BIO, user_Id)
+VALUES (nextval('ANIMAL_SEQ'), 'Gillende Giraf', 'Antwerpen', 'Zit al gans mijn levin in de zoo van Antwerpen :-(', 3);
 
-INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-VALUES (2, 'De Olifant', 'Mechelen', 'Geboren en getogen Mechelenaar!');
+INSERT INTO ANIMAL (ID, NAME, CITY, BIO, user_Id)
+VALUES (nextval('ANIMAL_SEQ'), 'De Olifant', 'Mechelen', 'Geboren en getogen Mechelenaar!', 4);
 
-INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-VALUES (3, 'Dorstige Dromedaris', 'Mortsel', '');
+INSERT INTO ANIMAL (ID, NAME, CITY, BIO, user_Id)
+VALUES (nextval('ANIMAL_SEQ'), 'Dorstige Dromedaris', 'Mortsel', '', 5);
 
-INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-VALUES (4, 'Dansende Draak', 'Lier', 'Van onder de Zimmertoren');
+INSERT INTO ANIMAL (ID, NAME, CITY, BIO, user_Id)
+VALUES (nextval('ANIMAL_SEQ'), 'Dansende Draak', 'Lier', 'Van onder de Zimmertoren', 6);
 
 --party animal
 INSERT INTO PARTY_ANIMALS (PARTIES_ID, ANIMALS_ID) VALUES (1, 1);
@@ -255,12 +280,3 @@ INSERT INTO PARTY_ANIMALS (PARTIES_ID, ANIMALS_ID) VALUES (4, 3);
 INSERT INTO PARTY_ANIMALS (PARTIES_ID, ANIMALS_ID) VALUES (5, 3);
 INSERT INTO PARTY_ANIMALS (PARTIES_ID, ANIMALS_ID) VALUES (1, 4);
 INSERT INTO PARTY_ANIMALS (PARTIES_ID, ANIMALS_ID) VALUES (2, 4);
-
---user
-INSERT INTO user(
-    ID, USERNAME, PASSWORD, ROLE)
-    VALUES (nextval('USER_SEQ'), 'admin', '$2a$10$quITr64cP5eENwFJsorppukD5z18iq13GQ97Ke9v58E69UftZ3vt2', 'ROLE_ADMIN');
-
-INSERT INTO user(
-    ID, USERNAME, PASSWORD, ROLE)
-VALUES (nextval('USER_SEQ'), 'daria', '$2a$10$XyWeDv22PpxAplDmI0pqUu7Qo1NdlrXracPeo.HbtA61UvLGTaYk6', 'ROLE_USER');
