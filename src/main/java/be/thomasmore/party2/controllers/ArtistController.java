@@ -19,22 +19,18 @@ import java.util.Optional;
 public class ArtistController {
     @Autowired
     private ArtistRepository artistRepository;
-    private Logger logger = LoggerFactory.getLogger(ArtistController.class);
 
     @GetMapping("/artistlist")
-    public String artistlist(Model model, Principal principal){
+    public String artistlist(Model model){
         Iterable<Artist> allArtists = artistRepository.findAll();
         model.addAttribute("artists", allArtists);
         model.addAttribute("nrArtists", artistRepository.count());
-
-        final String loginName = principal==null ? "NOBODY" : principal.getName();
-        model.addAttribute("principal", principal);
 
         return "artistlist";
     }
 
     @GetMapping("/artistlist/filter")
-    public String artistlistWithFilter(Model model, @RequestParam(required = false) String keyword, Principal principal) {
+    public String artistlistWithFilter(Model model, @RequestParam(required = false) String keyword) {
         Iterable<Artist> allArtists = null;
         if(keyword==null){
             allArtists = artistRepository.findAll();
@@ -46,14 +42,11 @@ public class ArtistController {
         model.addAttribute("nrArtists", allArtists.spliterator().getExactSizeIfKnown());
         model.addAttribute("keyword", keyword);
 
-        final String loginName = principal==null ? "NOBODY" : principal.getName();
-        model.addAttribute("principal", principal);
-
         return "artistlist";
     }
 
     @GetMapping({"artistdetails", "/artistdetails/{id}"})
-    public String artistDetails(Model model, @PathVariable(required = false) Integer id, Principal principal) {
+    public String artistDetails(Model model, @PathVariable(required = false) Integer id) {
         if (id==null) return "venuedetails";
         Optional<Artist> optionalArtist = artistRepository.findById(id);
         Optional<Artist> optionalPrev = artistRepository.findFirstByIdLessThanOrderByIdDesc(id);
@@ -72,9 +65,6 @@ public class ArtistController {
         } else {
             model.addAttribute("next", artistRepository.findFirstByOrderByIdAsc().get().getId());
         }
-
-        final String loginName = principal==null ? "NOBODY" : principal.getName();
-        model.addAttribute("principal", principal);
 
         return "artistdetails";
     }

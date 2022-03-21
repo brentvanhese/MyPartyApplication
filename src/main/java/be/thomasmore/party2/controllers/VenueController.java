@@ -27,7 +27,7 @@ public class VenueController {
     private Logger logger = LoggerFactory.getLogger(VenueController.class);
 
     @GetMapping({"venuedetails", "/venuedetails/{id}"})
-    public String venueDetails(Model model, @PathVariable(required = false) Integer id, Principal principal) {
+    public String venueDetails(Model model, @PathVariable(required = false) Integer id) {
         if (id==null) return "venuedetails";
         Optional<Venue> optionalVenue = venueRepository.findById(id);
         Iterable<Party> optionalParties = partyRepository.findByVenueId(optionalVenue.get().getId());
@@ -48,26 +48,20 @@ public class VenueController {
             model.addAttribute("next", venueRepository.findFirstByOrderByIdAsc().get().getId());
         }
 
-        final String loginName = principal==null ? "NOBODY" : principal.getName();
-        model.addAttribute("principal", principal);
-
         return "venuedetails";
     }
 
     @GetMapping({"/venuelist", "/venuelist/{something}"})
-    public String venuelist(Model model, Principal principal) {
+    public String venuelist(Model model) {
         Iterable<Venue> allVenues = venueRepository.findAllVenues();
         model.addAttribute("venues", allVenues);
         model.addAttribute("nrVenues", venueRepository.count());
-
-        final String loginName = principal==null ? "NOBODY" : principal.getName();
-        model.addAttribute("principal", principal);
 
         return "venuelist";
     }
 
     @GetMapping("/venuelist/filter")
-    public String venueListWithFilter(Model model, @RequestParam(required = false) Integer minimumCapacity, @RequestParam(required = false) Integer maximumCapacity, @RequestParam(required = false) Double maxDistance, @RequestParam(required = false) String filterFood, @RequestParam(required = false) String filterIndoor, @RequestParam(required = false) String filterOutdoor, Principal principal) {
+    public String venueListWithFilter(Model model, @RequestParam(required = false) Integer minimumCapacity, @RequestParam(required = false) Integer maximumCapacity, @RequestParam(required = false) Double maxDistance, @RequestParam(required = false) String filterFood, @RequestParam(required = false) String filterIndoor, @RequestParam(required = false) String filterOutdoor) {
         logger.info(String.format("venueListWithFilter -- min=%d", minimumCapacity));
         Iterable<Venue> allVenues = venueRepository.findByCapacityBetweenQuery(minimumCapacity, maximumCapacity, maxDistance, filterFood, filterIndoor, filterOutdoor);
         model.addAttribute("venues", allVenues);
@@ -79,9 +73,6 @@ public class VenueController {
         model.addAttribute("foodProvided", filterFood);
         model.addAttribute("indoor", filterIndoor);
         model.addAttribute("outdoor", filterOutdoor);
-
-        final String loginName = principal==null ? "NOBODY" : principal.getName();
-        model.addAttribute("principal", principal);
 
         return "venuelist";
     }

@@ -23,63 +23,43 @@ public class AdminController {
     private VenueRepository venueRepository;
 
     @ModelAttribute("party")
-    public Party findParty(Model model, @PathVariable(required = false) Integer id, Principal principal) {
+    public Party findParty(Model model, @PathVariable(required = false) Integer id) {
         logger.info("findParty "+id);
         if (id!=null) {
             Optional<Party> optionalParty = partyRepository.findById(id);
             if (optionalParty.isPresent()) return optionalParty.get();
         }
 
-        final String loginName = principal==null ? "NOBODY" : principal.getName();
-        logger.info("homepage - logged in as " + loginName);
-        model.addAttribute("principal", principal);
-
         return new Party();
     }
 
     @GetMapping("/partyedit/{id}")
-    public String partyEdit(Model model, @PathVariable int id, Principal principal) {
+    public String partyEdit(Model model, @PathVariable int id) {
         logger.info("partyedit : "+id);
         model.addAttribute("venues", venueRepository.findAllVenues());
-
-        final String loginName = principal==null ? "NOBODY" : principal.getName();
-        logger.info("homepage - logged in as " + loginName);
-        model.addAttribute("principal", principal);
 
         return "admin/partyedit";
     }
 
     @PostMapping("/partyedit/{id}")
-    public String partyEditPost(Model model, @PathVariable int id, @ModelAttribute("party") Party party, Principal principal) {
+    public String partyEditPost(Model model, @PathVariable int id, @ModelAttribute("party") Party party) {
         logger.info("partyEditPost " + id + " -- new name=" + party.getName());
         partyRepository.save(party);
-
-        final String loginName = principal==null ? "NOBODY" : principal.getName();
-        logger.info("homepage - logged in as " + loginName);
-        model.addAttribute("principal", principal);
 
         return "redirect:/partydetails/"+id;
     }
 
     @GetMapping("/partynew")
-    public String partyNew(Model model, Principal principal) {
+    public String partyNew(Model model) {
         model.addAttribute("venues", venueRepository.findAllVenues());
-
-        final String loginName = principal==null ? "NOBODY" : principal.getName();
-        logger.info("homepage - logged in as " + loginName);
-        model.addAttribute("principal", principal);
 
         return "admin/partynew";
     }
 
     @PostMapping("/partynew")
-    public String partyNewPost(Model model, @ModelAttribute("party") Party party, Principal principal) {
+    public String partyNewPost(Model model, @ModelAttribute("party") Party party) {
         logger.info("partyNewPost -- new name=" + party.getName() + ", date=" + party.getDate());
         partyRepository.save(party);
-
-        final String loginName = principal==null ? "NOBODY" : principal.getName();
-        logger.info("homepage - logged in as " + loginName);
-        model.addAttribute("principal", principal);
 
         return "redirect:/partydetails/"+party.getId();
     }

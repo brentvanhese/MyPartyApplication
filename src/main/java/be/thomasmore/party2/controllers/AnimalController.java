@@ -18,16 +18,13 @@ public class AnimalController {
     private AnimalRepository animalRepository;
 
     @GetMapping({"animaldetails", "/animaldetails/{id}"})
-    public String artistDetails(Model model, @PathVariable(required = false) Integer id, Principal principal) {
+    public String artistDetails(Model model, @PathVariable(required = false) Integer id) {
         if (id==null) return "venuedetails";
         Optional<Animal> optionalAnimal = animalRepository.findById(id);
         if (optionalAnimal.isPresent()) {
             model.addAttribute("animal", optionalAnimal.get());
             model.addAttribute("parties", optionalAnimal.get().getParties());
         }
-
-        final String loginName = principal==null ? "NOBODY" : principal.getName();
-        model.addAttribute("principal", principal);
 
         return "animaldetails";
     }

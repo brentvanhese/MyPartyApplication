@@ -1,5 +1,5 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
-<html lang="nl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="nl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Partydetails</title>
@@ -19,7 +19,7 @@
         <div th:if="${next!=null}" class="nextButtonDiv">
             <a class="button-look smallButton" th:href="@{'/partydetails/' + ${next}}">&gt;</a>
         </div>
-        <div class="nextButtonDiv">
+        <div sec:authorize="hasRole('ROLE_ADMIN')" class="nextButtonDiv">
         <a class="button-look smallButton" th:href="@{'/admin/partyedit/' + ${id}}">Edit</a>
         </div>
 

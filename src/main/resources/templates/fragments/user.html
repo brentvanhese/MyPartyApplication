@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 
-<div th:unless="${principal}" th:fragment="loginmenu">
+<div sec:authorize="isAnonymous()" th:fragment="loginmenu">
     <a href="/login">Login</a>
 </div>
 
-<div th:unless="!${principal}" th:fragment="logoutmenu">
+<div sec:authorize="isAuthenticated()" th:fragment="logoutmenu">
     <a href="/logout">Logout</a>
 </div>
 

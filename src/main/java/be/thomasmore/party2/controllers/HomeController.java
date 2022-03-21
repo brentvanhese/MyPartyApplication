@@ -17,23 +17,19 @@ public class HomeController {
     private Logger logger = LoggerFactory.getLogger(HomeController.class);
 
     @GetMapping({"/", "/home"})
-    public String home(Model model, Principal principal) {
-        final String loginName = principal==null ? "NOBODY" : principal.getName();
-        logger.info("homepage - logged in as " + loginName);
-        model.addAttribute("principal", principal);
+    public String home(Model model) {
+
         return "home";
     }
 
     @GetMapping("/about")
-    public String about(Model model, Principal principal){
-        final String loginName = principal==null ? "NOBODY" : principal.getName();
-        logger.info("homepage - logged in as " + loginName);
-        model.addAttribute("principal", principal);
+    public String about(Model model){
+
         return "about";
     }
 
     @GetMapping("/pay")
-    public String pay(Model model, Principal principal){
+    public String pay(Model model){
         LocalDateTime now = LocalDateTime.now();
         System.out.println("Before formatting: " + now);
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -49,10 +45,6 @@ public class HomeController {
 
         boolean weekend = now.getDayOfWeek().equals(DayOfWeek.SATURDAY) || now.getDayOfWeek().equals(DayOfWeek.SUNDAY);
         model.addAttribute("weekend", weekend);
-
-        final String loginName = principal==null ? "NOBODY" : principal.getName();
-        logger.info("homepage - logged in as " + loginName);
-        model.addAttribute("principal", principal);
 
         return "pay";
     }
