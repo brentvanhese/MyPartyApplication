@@ -7,11 +7,11 @@
 <body>
 
 <div sec:authorize="isAnonymous()" th:fragment="loginmenu">
-    <a href="/login">Login</a>
+    <a href="/user/login">Login</a>
 </div>
 
 <div sec:authorize="isAuthenticated()" th:fragment="logoutmenu">
-    <a href="/logout">Logout</a>
+    <a href="/user/logout">Logout</a>
 </div>
 
 </body>
