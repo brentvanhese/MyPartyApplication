@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.security.Principal;
 import java.util.Optional;
 
 @Controller
@@ -26,7 +27,7 @@ public class VenueController {
     private Logger logger = LoggerFactory.getLogger(VenueController.class);
 
     @GetMapping({"venuedetails", "/venuedetails/{id}"})
-    public String venueDetails(Model model, @PathVariable(required = false) Integer id) {
+    public String venueDetails(Model model, @PathVariable(required = false) Integer id, Principal principal) {
         if (id==null) return "venuedetails";
         Optional<Venue> optionalVenue = venueRepository.findById(id);
         Iterable<Party> optionalParties = partyRepository.findByVenueId(optionalVenue.get().getId());
@@ -46,19 +47,27 @@ public class VenueController {
         } else {
             model.addAttribute("next", venueRepository.findFirstByOrderByIdAsc().get().getId());
         }
+
+        final String loginName = principal==null ? "NOBODY" : principal.getName();
+        model.addAttribute("principal", principal);
+
         return "venuedetails";
     }
 
     @GetMapping({"/venuelist", "/venuelist/{something}"})
-    public String venuelist(Model model) {
+    public String venuelist(Model model, Principal principal) {
         Iterable<Venue> allVenues = venueRepository.findAllVenues();
         model.addAttribute("venues", allVenues);
         model.addAttribute("nrVenues", venueRepository.count());
+
+        final String loginName = principal==null ? "NOBODY" : principal.getName();
+        model.addAttribute("principal", principal);
+
         return "venuelist";
     }
 
     @GetMapping("/venuelist/filter")
-    public String venueListWithFilter(Model model, @RequestParam(required = false) Integer minimumCapacity, @RequestParam(required = false) Integer maximumCapacity, @RequestParam(required = false) Double maxDistance, @RequestParam(required = false) String filterFood, @RequestParam(required = false) String filterIndoor, @RequestParam(required = false) String filterOutdoor) {
+    public String venueListWithFilter(Model model, @RequestParam(required = false) Integer minimumCapacity, @RequestParam(required = false) Integer maximumCapacity, @RequestParam(required = false) Double maxDistance, @RequestParam(required = false) String filterFood, @RequestParam(required = false) String filterIndoor, @RequestParam(required = false) String filterOutdoor, Principal principal) {
         logger.info(String.format("venueListWithFilter -- min=%d", minimumCapacity));
         Iterable<Venue> allVenues = venueRepository.findByCapacityBetweenQuery(minimumCapacity, maximumCapacity, maxDistance, filterFood, filterIndoor, filterOutdoor);
         model.addAttribute("venues", allVenues);
@@ -70,6 +79,10 @@ public class VenueController {
         model.addAttribute("foodProvided", filterFood);
         model.addAttribute("indoor", filterIndoor);
         model.addAttribute("outdoor", filterOutdoor);
+
+        final String loginName = principal==null ? "NOBODY" : principal.getName();
+        model.addAttribute("principal", principal);
+
         return "venuelist";
     }
 }

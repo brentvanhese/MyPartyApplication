@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.security.Principal;
 import java.util.Optional;
 
 @Controller
@@ -17,15 +18,19 @@ public class PartyController {
     private PartyRepository partyRepository;
 
     @GetMapping({"/partylist", "/partylist/{something}"})
-    public String partylist(Model model) {
+    public String partylist(Model model, Principal principal) {
         Iterable<Party> allParties = partyRepository.findAll();
         model.addAttribute("parties", allParties);
         model.addAttribute("nrParties", partyRepository.count());
+
+        final String loginName = principal==null ? "NOBODY" : principal.getName();
+        model.addAttribute("principal", principal);
+
         return "partylist";
     }
 
     @GetMapping({"partydetails", "/partydetails/{id}"})
-    public String partydetails(Model model, @PathVariable(required = false) Integer id) {
+    public String partydetails(Model model, @PathVariable(required = false) Integer id, Principal principal) {
         if (id==null) return "venuedetails";
         Optional<Party> optionalParty = partyRepository.findById(id);
         Optional<Party> optionalPrev = partyRepository.findFirstByIdLessThanOrderByIdDesc(id);
@@ -46,6 +51,10 @@ public class PartyController {
         } else {
             model.addAttribute("next", partyRepository.findFirstByOrderByIdAsc().get().getId());
         }
+
+        final String loginName = principal==null ? "NOBODY" : principal.getName();
+        model.addAttribute("principal", principal);
+
         return "partydetails";
     }
 }

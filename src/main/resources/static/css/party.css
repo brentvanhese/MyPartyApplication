@@ -34,6 +34,10 @@ nav li a{
     height: 20px;
 }
 
+.loginButton{
+    float: right;
+}
+
 header{
     padding: 15px;
     background-color: #6A8E7F;
