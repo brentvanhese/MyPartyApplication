@@ -1,5 +1,5 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Header</title>
@@ -7,6 +7,7 @@
 <body>
 <header th:fragment="header">
     <h1>Let's party!</h1>
+    <p class="loggedInText" sec:authorize="isAuthenticated()">Logged in as <span sec:authentication="name"></span></p>
     <nav>
         <ul>
             <li><a th:href="@{/}">Home</a></li>

@@ -38,6 +38,11 @@ nav li a{
     float: right;
 }
 
+.loggedInText{
+    text-align: right;
+    color: #EDC7CF;
+}
+
 header{
     padding: 15px;
     background-color: #6A8E7F;
