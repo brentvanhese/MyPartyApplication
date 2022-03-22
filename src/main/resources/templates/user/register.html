@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Register</title>
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}" href="/static/css/party.css"/>
 </head>
 <body>
@@ -12,20 +12,32 @@
 </header>
 
 <main>
-    <form th:action="@{/user/login}" method="post">
+    <form th:action="@{/user/register}" method="post">
         <div class="oneinput saveButtonDiv">
-            <input type="submit" value="login" class="smallButton buttonLook">
+            <input type="submit" value="Go!" class="smallButton buttonLook">
         </div>
         <div class="oneinput cancelButtonDiv">
             <a href="../partylist.html" class="smallButton buttonLook">cancel</a>
         </div>
         <div class="oneinput">
-            <label for="name" class="info">Username: </label>
-            <input type="text" id="name" name="username" class="editfield">
+            <label for="userName" class="info">Username: </label>
+            <input type="text" id="userName" name="userName">
         </div>
         <div class="oneinput">
             <label for="password" class="info">Password: </label>
-            <input type="password" id="password" name="password" class="editfield">
+            <input type="password" id="password" name="password">
+        </div>
+        <div class="oneinput">
+            <label for="name" class="info">Name: </label>
+            <input type="text" id="name" name="name">
+        </div>
+        <div class="oneinput">
+            <label for="city" class="info">City: </label>
+            <input type="text" id="city" name="city">
+        </div>
+        <div class="oneinput">
+            <label for="bio" class="info">Bio: </label>
+            <input type="text" id="bio" name="bio">
         </div>
     </form>
 

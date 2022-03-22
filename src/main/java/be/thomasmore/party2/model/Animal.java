@@ -20,6 +20,13 @@ public class Animal {
     public Animal() {
     }
 
+    public Animal(String name, String city, String bio, User user) {
+        this.name = name;
+        this.city = city;
+        this.bio = bio;
+        this.user = user;
+    }
+
     public Integer getId() {
         return id;
     }
