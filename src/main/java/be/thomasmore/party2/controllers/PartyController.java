@@ -46,7 +46,9 @@ public class PartyController {
             model.addAttribute("id", optionalParty.get().getId());
             if(principal!=null){
                 Optional<Animal> optionalAnimal = animalRepository.findByUsername(principal.getName());
-                model.addAttribute("animal", optionalAnimal.get());
+                if (optionalAnimal.isPresent()){
+                    model.addAttribute("animal", optionalAnimal.get());
+                }
             }
         }
         if (optionalPrev.isPresent()) {
